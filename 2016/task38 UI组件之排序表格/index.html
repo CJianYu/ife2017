@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task38</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+     <script type="text/x-template" id="grid-tamplate">
+     <table>
+        <thead>
+            <tr>
+                <th v-for="key in columns" @click="sortBy(key)" :class="{active:sortKey==key}">{{key|capitalize}}<span class="arrow" :class="sortOrders[key]>0?'top':'under'"></span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="entry in filteredData">
+                <td v-for="key in columns">{{entry[key]}}</td>
+            </tr>
+
+        </tbody>
+     </table>
+     </script>
+
+
+     <div id="resultForm">
+         <grid
+            :data="gridData"
+            :columns="gridColumns">
+
+         </grid>
+     </div>
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
